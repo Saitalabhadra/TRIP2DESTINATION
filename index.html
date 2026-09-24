@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip2Destination - Explore India</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SPLASH SCREEN ================= -->
+
+    <section id="splashScreen" class="screen splash-screen">
+
+        <div class="splash-background"></div>
+
+        <div class="splash-content">
+
+            <div class="logo-big">
+                <span class="logo-icon">✈</span>
+                <span>Trip2<span>Destination</span></span>
+            </div>
+
+            <p class="splash-tagline">
+                Explore India. Create Memories.
+            </p>
+
+            <div class="india-symbol">
+                🇮🇳
+            </div>
+
+            <button class="primary-btn" onclick="showScreen('loginScreen')">
+                Start Exploring
+                <span>→</span>
+            </button>
+
+            <p class="splash-small">
+                Discover incredible places across India
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ================= LOGIN SCREEN ================= -->
+
+    <section id="loginScreen" class="screen login-screen hidden">
+
+        <div class="login-container">
+
+            <div class="login-logo">
+                <div class="mini-logo">✈</div>
+
+                <h1>
+                    Trip2<span>Destination</span>
+                </h1>
+            </div>
+
+            <p class="welcome-text">
+                Your next Indian adventure starts here.
+            </p>
+
+            <div class="login-card">
+
+                <h2>Welcome Back 👋</h2>
+
+                <p class="muted">
+                    Login to continue your journey
+                </p>
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                >
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                    >
+
+                    <button onclick="togglePassword()">
+                        👁
+                    </button>
+
+                </div>
+
+                <div class="login-options">
+
+                    <label class="remember">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+
+                </div>
+
+                <button
+                    class="primary-btn full"
+                    onclick="loginUser()"
+                >
+                    Login
+                </button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <button class="google-btn" onclick="loginUser()">
+                    <span>G</span>
+                    Continue with Google
+                </button>
+
+                <p class="signup-text">
+                    Don't have an account?
+                    <a href="#" onclick="loginUser()">Create Account</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN APP ================= -->
+
+    <section id="mainApp" class="main-app hidden">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+
+                <div class="brand">
+                    <span class="brand-icon">✈</span>
+
+                    <span>
+                        Trip2<span>Destination</span>
+                    </span>
+                </div>
+
+                <p class="location">
+                    📍 India
+                </p>
+
+            </div>
+
+            <button class="notification-btn">
+                🔔
+                <span></span>
+            </button>
+
+        </header>
+
+
+        <!-- ================= HOME ================= -->
+
+        <main id="homePage" class="page active">
+
+            <section class="hero-section">
+
+                <div class="hero-overlay"></div>
+
+                <div class="hero-content">
+
+                    <p class="hero-small">
+                        INCREDIBLE INDIA
+                    </p>
+
+                    <h1>
+                        Explore India,
+                        <br>
+                        One Journey at a Time
+                    </h1>
+
+                    <p>
+                        Discover hidden gems, beautiful beaches,
+                        royal cities and unforgettable mountains.
+                    </p>
+
+                    <button
+                        class="hero-btn"
+                        onclick="openTrips()"
+                    >
+                        Explore Trips →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEARCH -->
+
+            <section class="search-section">
+
+                <div class="search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search destinations..."
+                        oninput="searchTrips()"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- CATEGORIES -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">EXPLORE</p>
+                        <h2>Travel by Experience</h2>
+                    </div>
+
+                    <button onclick="openTrips()">
+                        See all
+                    </button>
+
+                </div>
+
+                <div class="category-scroll">
+
+                    <button
+                        class="category active"
+                        onclick="filterCategory('all', this)"
+                    >
+                        <span>🌎</span>
+                        All
+                    </button>
+
+                    <button
+                        class="category"
+                        onclick="filterCategory('mountains', this)"
+                    >
+                        <span>🏔️</span>
+                        Mountains
+                    </button>
+
+                    <button
+                        class="category"
+                        onclick="filterCategory('beach', this)"
+                    >
+                        <span>🏖️</span>
+                        Beaches
+                    </button>
+
+                    <button
+                        class="category"
+                        onclick="filterCategory('heritage', this)"
+                    >
+                        <span>🏰</span>
+                        Heritage
+                    </button>
+
+                    <button
+                        class="category"
+                        onclick="filterCategory('nature', this)"
+                    >
+                        <span>🌿</span>
+                        Nature
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- POPULAR DESTINATIONS -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">TOP PLACES</p>
+                        <h2>Popular Destinations</h2>
+                    </div>
+
+                    <button onclick="openTrips()">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="destination-grid">
+
+                    <article
+                        class="destination-card"
+                        onclick="showTrip('manali')"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=85"
+                            alt="Manali"
+                        >
+
+                        <div class="destination-info">
+
+                            <h3>Manali</h3>
+
+                            <p>Himachal Pradesh</p>
+
+                            <strong>From ₹8,999</strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="destination-card"
+                        onclick="showTrip('goa')"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=85"
+                            alt="Goa"
+                        >
+
+                        <div class="destination-info">
+
+                            <h3>Goa</h3>
+
+                            <p>Beaches & Nightlife</p>
+
+                            <strong>From ₹7,499</strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="destination-card"
+                        onclick="showTrip('jaipur')"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=85"
+                            alt="Jaipur"
+                        >
+
+                        <div class="destination-info">
+
+                            <h3>Jaipur</h3>
+
+                            <p>Rajasthan</p>
+
+                            <strong>From ₹6,999</strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article
+                        class="destination-card"
+                        onclick="showTrip('kerala')"
+                    >
+
+                        <img
+                            src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=900&q=85"
+                            alt="Kerala"
+                        >
+
+                        <div class="destination-info">
+
+                            <h3>Kerala</h3>
+
+                            <p>God's Own Country</p>
+
+                            <strong>From ₹9,499</strong>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats-section">
+
+                <div class="stat">
+
+                    <strong>25K+</strong>
+
+                    <span>Happy Travelers</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <strong>150+</strong>
+
+                    <span>Indian Destinations</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <strong>4.8★</strong>
+
+                    <span>Average Rating</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- FEATURED PACKAGE -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">SPECIAL PACKAGE</p>
+
+                        <h2>Weekend Escape</h2>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="featured-card"
+                    onclick="showTrip('kerala')"
+                >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1200&q=85"
+                        alt="Kerala backwaters"
+                    >
+
+                    <div class="featured-content">
+
+                        <span class="offer">
+                            20% OFF
+                        </span>
+
+                        <h2>
+                            Kerala Backwater Escape
+                        </h2>
+
+                        <p>
+                            4 Days • 3 Nights
+                        </p>
+
+                        <div class="featured-bottom">
+
+                            <strong>
+                                ₹12,999
+                            </strong>
+
+                            <button>
+                                View Trip
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REVIEWS -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">TRAVEL STORIES</p>
+
+                        <h2>What Travelers Say</h2>
+
+                    </div>
+
+                </div>
+
+                <div class="review-card">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Trip2Destination made our Rajasthan trip
+                        incredibly easy. The hotel, sightseeing and
+                        transport were perfectly arranged."
+                    </p>
+
+                    <div class="review-user">
+
+                        <div class="avatar">
+                            A
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Ananya Sharma
+                            </strong>
+
+                            <span>
+                                Hyderabad
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= TRIPS PAGE ================= -->
+
+        <main id="tripsPage" class="page">
+
+            <div class="page-header">
+
+                <p class="eyebrow">
+                    DISCOVER
+                </p>
+
+                <h1>
+                    Explore Trips
+                </h1>
+
+                <p>
+                    Handpicked journeys across India
+                </p>
+
+            </div>
+
+            <div
+                id="tripList"
+                class="trip-list"
+            >
+
+                <!-- Generated by JavaScript -->
+
+            </div>
+
+        </main>
+
+
+        <!-- ================= TRIP DETAILS ================= -->
+
+        <main id="detailsPage" class="page">
+
+            <button
+                class="back-button"
+                onclick="openTrips()"
+            >
+                ← Back
+            </button>
+
+            <div id="tripDetails">
+
+                <!-- Generated by JavaScript -->
+
+            </div>
+
+        </main>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <main id="settingsPage" class="page">
+
+            <div class="page-header">
+
+                <p class="eyebrow">
+                    ACCOUNT
+                </p>
+
+                <h1>
+                    Settings
+                </h1>
+
+            </div>
+
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">
+                    T
+                </div>
+
+                <div>
+
+                    <h3>
+                        Travel Explorer
+                    </h3>
+
+                    <p>
+                        traveler@trip2destination.com
+                    </p>
+
+                </div>
+
+                <button>
+                    ✏️
+                </button>
+
+            </div>
+
+
+            <div class="settings-group">
+
+                <h3>
+                    Preferences
+                </h3>
+
+                <div class="setting-item">
+
+                    <div>
+                        <span class="setting-icon">
+                            🌐
+                        </span>
+
+                        <div>
+                            <strong>
+                                Language
+                            </strong>
+
+                            <small>
+                                English
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <span>›</span>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+                        <span class="setting-icon">
+                            💰
+                        </span>
+
+                        <div>
+                            <strong>
+                                Currency
+                            </strong>
+
+                            <small>
+                                Indian Rupee (₹)
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <span>›</span>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+                        <span class="setting-icon">
+                            🔔
+                        </span>
+
+                        <div>
+                            <strong>
+                                Notifications
+                            </strong>
+
+                            <small>
+                                Travel offers & updates
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-group">
+
+                <h3>
+                    Support
+                </h3>
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <span class="setting-icon">
+                            ❓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Help Center
+                            </strong>
+
+                            <small>
+                                Get assistance
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <span>›</span>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <span class="setting-icon">
+                            📄
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Terms & Privacy
+                            </strong>
+
+                            <small>
+                                Read our policies
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <span>›</span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                onclick="logoutUser()"
+            >
+                Log Out
+            </button>
+
+        </main>
+
+
+        <!-- ================= BOTTOM NAVIGATION ================= -->
+
+        <nav class="bottom-nav">
+
+            <button
+                class="nav-item active"
+                onclick="navigate('homePage', this)"
+            >
+
+                <span>⌂</span>
+
+                <small>
+                    Home
+                </small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="navigate('tripsPage', this)"
+            >
+
+                <span>🧭</span>
+
+                <small>
+                    Trips
+                </small>
+
+            </button>
+
+
+            <button
+                class="nav-item explore-button"
+                onclick="openTrips()"
+            >
+
+                <span>
+                    ✈
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="showComingSoon('Bookings')"
+            >
+
+                <span>🎫</span>
+
+                <small>
+                    Bookings
+                </small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="navigate('settingsPage', this)"
+            >
+
+                <span>⚙</span>
+
+                <small>
+                    Settings
+                </small>
+
+            </button>
+
+        </nav>
+
+    </section>
+
+
+    <!-- ================= BOOKING MODAL ================= -->
+
+    <div
+        id="bookingModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" onclick="closeBooking()"></div>
+
+        <div class="booking-modal">
+
+            <button
+                class="modal-close"
+                onclick="closeBooking()"
+            >
+                ×
+            </button>
+
+            <div class="booking-icon">
+                ✈️
+            </div>
+
+            <h2>
+                Book Your Trip
+            </h2>
+
+            <p id="bookingTripName">
+                Your adventure awaits!
+            </p>
+
+            <label>
+                Number of Travelers
+            </label>
+
+            <div class="counter">
+
+                <button onclick="changeTravelers(-1)">
+                    −
+                </button>
+
+                <strong id="travelerCount">
+                    2
+                </strong>
+
+                <button onclick="changeTravelers(1)">
+                    +
+                </button>
+
+            </div>
+
+            <div class="booking-price">
+
+                <span>
+                    Estimated total
+                </span>
+
+                <strong id="totalPrice">
+                    ₹17,998
+                </strong>
+
+            </div>
+
+            <button
+                class="primary-btn full"
+                onclick="confirmBooking()"
+            >
+                Continue Booking →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        Booking request submitted!
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
